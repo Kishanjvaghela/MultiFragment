@@ -11,4 +11,8 @@ public interface FragmentListener {
 
     void loadFragment(BaseMultiFragment fragment);
 
+    void loadFragmentForResult(int requestCode, BaseMultiFragment fragment);
+
+    void onBack();
+
 }

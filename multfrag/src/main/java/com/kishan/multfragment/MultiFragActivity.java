@@ -51,6 +51,17 @@ public abstract class MultiFragActivity extends AppCompatActivity implements Fra
     }
 
     @Override
+    public void loadFragmentForResult(int requestCode, BaseMultiFragment fragment) {
+        fragment.setReqCode(requestCode);
+        loadFragment(fragment);
+    }
+
+    @Override
+    public void onBack() {
+        onBackPressed();
+    }
+
+    @Override
     public void onBackPressed() {
         if (!onFragmentBack()) {
             super.onBackPressed();
@@ -63,11 +74,13 @@ public abstract class MultiFragActivity extends AppCompatActivity implements Fra
             //first check the home is enable or not
             if (mFragmentStacks.lastElement().isBackEnable()) {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                mFragmentStacks.lastElement().onPause();
+                BaseMultiFragment lastFragment = mFragmentStacks.lastElement();
+                lastFragment.onPause();
+
                 ft.remove(mFragmentStacks.pop());
                 // show previous fragment
                 BaseMultiFragment fragmentObject = mFragmentStacks.lastElement();
-
+                fragmentObject.onFragmentResult(lastFragment.getReqCode(), lastFragment.getResCode(), lastFragment.getResultBundle());
                 /**
                  * We need to update the title before we show the fragment
                  * other wise the previous loaded fragment could not able to

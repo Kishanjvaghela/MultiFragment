@@ -18,6 +18,10 @@ public class DemoFragment extends BaseMultiFragment {
     private static final String ARG_TEXT = "text";
     private static final String ARG_BACK = "back";
 
+    public static final int RESULT_CODE = 999;
+
+    public static final String RESULT_ARG = "result";
+
     public static DemoFragment get(String text, boolean back) {
         Bundle bundle = new Bundle();
         bundle.putString(ARG_TEXT, text);
@@ -43,6 +47,9 @@ public class DemoFragment extends BaseMultiFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.frag_dummy, container, false);
         mBinding.text.setText(text);
+        Bundle bundle = new Bundle();
+        bundle.putString(RESULT_ARG, "THis is content of fragment result");
+        setFragmentResult(RESULT_CODE, bundle);
         return mBinding.getRoot();
     }
 }

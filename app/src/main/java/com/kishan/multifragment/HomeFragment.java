@@ -75,7 +75,5 @@ public class HomeFragment extends BaseMultiFragment {
         public CharSequence getPageTitle(int position) {
             return title[position];
         }
-
-
     }
 }

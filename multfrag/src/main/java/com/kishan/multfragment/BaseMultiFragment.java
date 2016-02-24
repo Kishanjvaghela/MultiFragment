@@ -11,6 +11,9 @@ public class BaseMultiFragment extends Fragment {
     private String title;
     private boolean backEnable;
     private FragmentListener listener;
+    private int reqCode;
+    private int resCode;
+    private Bundle resultBundle;
 
     @Override
     public void onAttach(Context context) {
@@ -55,5 +58,38 @@ public class BaseMultiFragment extends Fragment {
 
     protected void loadFragment(BaseMultiFragment baseFragment) {
         listener.loadFragment(baseFragment);
+    }
+
+    public void setReqCode(int reqCode) {
+        this.reqCode = reqCode;
+    }
+
+    public void setFragmentResult(int resCode, Bundle resultBundle) {
+        this.resCode = resCode;
+        this.resultBundle = resultBundle;
+    }
+
+    public Bundle getResultBundle() {
+        return resultBundle;
+    }
+
+    public int getReqCode() {
+        return reqCode;
+    }
+
+    public int getResCode() {
+        return resCode;
+    }
+
+    protected void loadFragmentForResult(int requestCode, BaseMultiFragment fragment) {
+        listener.loadFragmentForResult(requestCode, fragment);
+    }
+
+    protected void onFragmentResult(int requestCode, int resultCode, Bundle bundle) {
+
+    }
+
+    protected void onBack() {
+        listener.onBack();
     }
 }

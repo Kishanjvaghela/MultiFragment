@@ -35,9 +35,18 @@ public class DemoButtonFragment extends BaseMultiFragment {
         mBinding.openButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadFragment(DemoFragment.get("This back enable fragment", true));
+                loadFragmentForResult(123, DemoFragment.get("This back enable fragment", true));
             }
         });
         return mBinding.getRoot();
+    }
+
+    @Override
+    protected void onFragmentResult(int requestCode, int resultCode, Bundle bundle) {
+        super.onFragmentResult(requestCode, resultCode, bundle);
+        if (requestCode == 123 && resultCode == DemoFragment.RESULT_CODE) {
+            bundle.getString(DemoFragment.RESULT_ARG);
+            mBinding.resultText.setText(bundle.getString(DemoFragment.RESULT_ARG));
+        }
     }
 }
