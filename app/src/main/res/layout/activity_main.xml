@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="MainScreenBinding"></data>
+
+    <LinearLayout
+        android:id="@+id/detectKeyboardLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:minHeight="@dimen/back_button_size">
+
+            <ImageButton
+                android:id="@+id/backButton"
+                android:layout_width="@dimen/back_button_size"
+                android:layout_height="@dimen/back_button_size"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:background="?selectableItemBackgroundBorderless"
+                android:contentDescription="@string/desc_back"
+                android:src="@drawable/ic_arrow_back"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:paddingLeft="@dimen/back_button_size"
+                android:paddingRight="@dimen/back_button_size"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                tools:text="TITLE" />
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/main_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            tools:background="@color/colorAccent" />
+
+        <LinearLayout
+            android:id="@+id/bottomTabBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_bar_height"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/tab1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btn_tab"
+                android:text="1"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/tab2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btn_tab"
+                android:text="2"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/tab3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btn_tab"
+                android:text="Home"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/tab4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btn_tab"
+                android:text="4"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/tab5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btn_tab"
+                android:text="5"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>
