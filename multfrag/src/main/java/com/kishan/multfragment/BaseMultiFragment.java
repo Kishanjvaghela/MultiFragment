@@ -14,6 +14,7 @@ public class BaseMultiFragment extends Fragment {
     private int reqCode;
     private int resCode;
     private Bundle resultBundle;
+    private int enterStart = -1, enterEnd = -1, exitStart = -1, exitEnd = -1;
 
     @Override
     public void onAttach(Context context) {
@@ -51,6 +52,31 @@ public class BaseMultiFragment extends Fragment {
         listener.setBackButton(backEnable);
     }
 
+    protected void setEnterAnimation(int start, int end) {
+        this.enterStart = start;
+        this.enterEnd = end;
+    }
+
+    protected void setExitAnimation(int start, int end) {
+        this.exitStart = start;
+        this.exitEnd = end;
+    }
+
+    public int getEnterStart() {
+        return enterStart;
+    }
+
+    public int getEnterEnd() {
+        return enterEnd;
+    }
+
+    public int getExitStart() {
+        return exitStart;
+    }
+
+    public int getExitEnd() {
+        return exitEnd;
+    }
 
     public String getTitle() {
         return title;

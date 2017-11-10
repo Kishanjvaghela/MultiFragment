@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.kishan.multfragment.BaseMultiFragment;
 import com.kishan.multifragment.databinding.DemoFragmentBinding;
@@ -32,10 +33,11 @@ public class DemoButtonFragment extends BaseMultiFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.frag_demo, container, false);
+        Toast.makeText(getActivity(), "OnCreate", Toast.LENGTH_SHORT).show();
         mBinding.openButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadFragmentForResult(123, DemoFragment.get("This back enable fragment", true));
+                loadFragmentForResult(123, NewDemoFragment.get("This back enable fragment", true));
             }
         });
         return mBinding.getRoot();

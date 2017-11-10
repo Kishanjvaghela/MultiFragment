@@ -3,7 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MultiFragment.iml" filepath="$PROJECT_DIR$/MultiFragment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MultiFragment.iml" filepath="$PROJECT_DIR$/MultiFragment.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/multfrag/multfrag.iml" filepath="$PROJECT_DIR$/multfrag/multfrag.iml" />
       <module fileurl="file://$PROJECT_DIR$/multfrag/multfrag.iml" filepath="$PROJECT_DIR$/multfrag/multfrag.iml" />
     </modules>
   </component>

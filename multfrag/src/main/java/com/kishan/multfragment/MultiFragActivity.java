@@ -37,6 +37,15 @@ public abstract class MultiFragActivity extends AppCompatActivity implements Fra
         if (fragment != null) {
             hideSoftInputWindow();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            // set animation
+            if (fragment.getEnterStart() != -1 &&
+                    fragment.getEnterEnd() != -1) {
+
+                transaction.setCustomAnimations(
+                        fragment.getEnterStart(), fragment.getEnterEnd()
+                );
+                //                        R.anim.slide_in_right, 0
+            }
             transaction.add(getContentId(), fragment);
             if (!mFragmentStacks.isEmpty()) {
                 Fragment lastFragment = mFragmentStacks.lastElement();
@@ -76,7 +85,11 @@ public abstract class MultiFragActivity extends AppCompatActivity implements Fra
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 BaseMultiFragment lastFragment = mFragmentStacks.lastElement();
                 lastFragment.onPause();
-
+                //
+                if (lastFragment.getExitEnd() != -1) {
+                    ft.setCustomAnimations(0, lastFragment.getExitEnd());
+                }
+//                android.R.anim.slide_out_right
                 ft.remove(mFragmentStacks.pop());
                 // show previous fragment
                 BaseMultiFragment fragmentObject = mFragmentStacks.lastElement();
@@ -89,9 +102,14 @@ public abstract class MultiFragActivity extends AppCompatActivity implements Fra
                 setTitle(fragmentObject.getTitle());
                 setBackButton(fragmentObject.isBackEnable());
                 fragmentObject.onResume();
+                if (lastFragment.getExitStart() != -1) {
+                    ft.setCustomAnimations(lastFragment.getExitStart(), 0);
+//                    ft.setCustomAnimations(android.R.anim.slide_in_left, 0);
+                }
                 ft.show(fragmentObject);
 //                ft.add(R.id.main_frame, fragmentObject.fragment, fragmentObject.fragment.getClass().toString());
                 ft.commitAllowingStateLoss();
+
                 return true;
             }
             return false;
